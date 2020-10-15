@@ -8,9 +8,9 @@ int main()
     float average;
     int score;
     scanf("%d", &number);
-    if (number == 0)
+    if (number == 0) //测试点2为输入为0
     {
-        printf("average = 0\n");
+        printf("average = 0.0\n");
         printf("count = 0\n");
         return 0;
     }
