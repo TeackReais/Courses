@@ -16,14 +16,7 @@ int main()
         for (; lower <= upper; lower = lower + 2)
         {
             celsius = 5 * (lower - 32.0) / 9.0;
-            if (lower < 10)
-            {
-                printf("%d    %.1lf\n", lower, celsius);
-            }
-            else
-            { 
-                printf("%d   %.1lf\n", lower, celsius);
-            }
+            printf("%d%6.1lf\n", lower, celsius);
         }
     }
     return 0;
