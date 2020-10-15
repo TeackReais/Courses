@@ -2,14 +2,14 @@
 #include <math.h>
 #include <stdbool.h>
 
-double changdu(int x1, int y1, int x2, int y2);
-bool judgesanjiaoxing(int x1, int y1, int x2, int y2, int x3, int y3);
-double mianji(int x1, int y1, int x2, int y2, int x3, int y3);
-bool fanwei(int n);
+double changdu(double x1, double y1, double x2, double y2);
+bool judgesanjiaoxing(double x1, double y1, double x2, double y2, double x3, double y3);
+double mianji(double x1, double y1, double x2, double y2, double x3, double y3);
+bool fanwei(double n);
 int main()
 {
-    int x1, y1, x2, y2, x3, y3;
-    scanf("%d %d %d %d %d %d", &x1, &y1, &x2, &y2, &x3, &y3);
+    double x1, y1, x2, y2, x3, y3;
+    scanf("%lf %lf %lf %lf %lf %lf", &x1, &y1, &x2, &y2, &x3, &y3);
     bool sanjiaoxing = judgesanjiaoxing(x1, y1, x2, y2, x3, y3);
     if (fanwei(x1) || fanwei(y1) || fanwei(x2) || fanwei(y2) || fanwei(x3) || fanwei(y3))
     {
@@ -31,14 +31,14 @@ int main()
     return 0;
 }
 
-double changdu(int x1, int y1, int x2, int y2)
+double changdu(double x1, double y1, double x2, double y2)
 {
     double result;
     result = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
     return result;
 }
 
-double mianji(int x1, int y1, int x2, int y2, int x3, int y3)
+double mianji(double x1, double y1, double x2, double y2, double x3, double y3)
 {
     double changdu1 = changdu(x1, y1, x2, y2);
     double changdu2 = changdu(x2, y2, x3, y3);
@@ -48,7 +48,7 @@ double mianji(int x1, int y1, int x2, int y2, int x3, int y3)
     result = sqrt(p * (p - changdu1) * (p - changdu2) * (p - changdu3));
     return result;
 }
-bool judgesanjiaoxing(int x1, int y1, int x2, int y2, int x3, int y3)
+bool judgesanjiaoxing(double x1, double y1, double x2, double y2, double x3, double y3)
 {
     double changdu1 = changdu(x1, y1, x2, y2);
     double changdu2 = changdu(x2, y2, x3, y3);
@@ -62,7 +62,7 @@ bool judgesanjiaoxing(int x1, int y1, int x2, int y2, int x3, int y3)
         return false;
     }
 }
-bool fanwei(int n)
+bool fanwei(double n)
 {
     if (n < -100 || n > 100)
     {
