@@ -8,6 +8,12 @@ int main()
     float average;
     int score;
     scanf("%d", &number);
+    if (number == 0)
+    {
+        printf("average = 0\n");
+        printf("count = 0\n");
+        return 0;
+    }
     for (int i = 1; i <= number; i++)
     {
         scanf("%d", &score);
@@ -22,6 +28,12 @@ int main()
     printf("count = %d\n", count);
     return 0;
 }
+
+
+
+
+
+
 /*
 float average(int numbers[], int number);
 int count(int numbers[], int number);
@@ -63,4 +75,5 @@ int count(int numbers[], int number)
         }
     }
     return result;
-}*/
+}
+*/
