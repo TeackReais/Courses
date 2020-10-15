@@ -12,5 +12,10 @@
 		{
 			"path": ".git"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"memory": "c"
+		}
+	}
 }
