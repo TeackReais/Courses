@@ -1,15 +1,27 @@
 {
 	"folders": [
 		{
+			"name": "Course1",
 			"path": "Course1"
 		},
 		{
+			"name": "Course2",
 			"path": "Course2"
 		},
 		{
+			"name": "Course3",
 			"path": "Course3"
 		},
 		{
+			"name": "Course4",
+			"path": "Course4"
+		},
+		{
+			"name": "Course5",
+			"path": "Course5"
+		},
+		{
+			"name": ".git",
 			"path": ".git"
 		}
 	],
