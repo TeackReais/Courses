@@ -1,20 +1,26 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 int fact(int a);
 bool panduanzhengfu(int quanpailie[][], int zongshu, int dijigepailie);
 int juzhenyunsuan(int shuzi[][], int jieshu);
+int yicipailieqiuhe(int shuzi[][], int quanpailie[][], int dijigepailie, int jieshu);
 int main()
 {
-    while (1)
+    while (true)
     {
         int jieshu;
-        printf("请输入行列式的阶数:");
+        printf("请输入行列式的阶数(或者输入0退出程序)\n");
         scanf("%d", &jieshu);
         if (jieshu == 1)
         {
             printf("不存在一阶行列式。\n");
             continue;
+        }
+        else if (jieshu == 0)
+        {
+            break;
         }
         int shuzi[jieshu][jieshu];
         for (int hangshu = 1; hangshu <= jieshu; hangshu++)
@@ -26,44 +32,11 @@ int main()
                 scanf("%d", &shuzi[hangshu - 1][geshu - 1]);
             }
         }
+        int result;
+        result = juzhenyunsuan(shuzi, jieshu);
+        printf("矩阵运算结果为:%d\n", result);
+        printf("按任意键继续。\n");
+        system("pause");
     }
     return 0;
-}
-
-int juzhenyunsuan(int shuzi[][], int jieshu)
-{
-    int sum;
-    int pailiezongshu = fact(jieshu);
-    int quanbupailie[pailiezongshu][jieshu];
-
-    return sum;
-}
-
-bool panduanzhengfu(int quanpailie[][], int zongshu, int dijigepailie) //ture为正
-{
-    int nixushu;
-    for (int i = 1; i <= zongshu; i++)
-    {
-        if (quanpailie[dijigepailie - 1][i - 1] > i)
-        {
-            nixushu++;
-        }
-    }
-    if (nixushu % 2 == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-int fact(int a)
-{
-    int result = 1;
-    for (int i = 1; i <= a; i++)
-    {
-        result = result * i;
-    }
-    return result;
 }
