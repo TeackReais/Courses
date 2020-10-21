@@ -40,3 +40,27 @@ int main()
     }
     return 0;
 }
+
+int n;
+int vis[50];
+int pailiedijigeshuzi = 0;
+
+void dfs(int x, int num, int dijigepailie, int quanpailie[][])
+{
+    if (x == n + 1) //考虑完了n位数,再进一次时打印
+    {
+        num = quanpailie[dijigepailie - 1][pailiedijigeshuzi];
+        pailiedijigeshuzi++;
+        return;
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (vis[i] == 0)
+        {
+            vis[i] = 1;
+            dfs(x + 1, num * 10 + i);
+            vis[i] = 0;
+        }
+    }
+}
+// 链接：https : //www.zhihu.com/question/391704951/answer/1194644359
