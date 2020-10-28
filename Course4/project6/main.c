@@ -4,27 +4,28 @@ int main()
 {
     int input;
     scanf("%d", &input);
-    int fen5 = 1;
-    int fen2 = 1;
-    int fen1 = 1;
-    int other = input - 8;
-    int i1 = 0;
-    int i2 = 0;
-    int i3 = 0;
-    while (other - 5 >= 0)
+    int count = 0;
+    for (int fen5shiyan = 20; fen5shiyan >= 0; fen5shiyan--)
     {
-        other = other - 5;
-        i1++;
+        for (int fen2shiyan = 100; fen2shiyan >= 0; fen2shiyan--)
+        {
+            int fen5 = 1;
+            int fen2 = 1;
+            int fen1 = 1;
+            int other = input - 8;
+            int fen1shiyan;
+            fen1shiyan = other - 5 * fen5shiyan - 2 * fen2shiyan;
+            if (fen1shiyan < 0)
+            {
+                continue;
+            }
+            fen5 = fen5 + fen5shiyan;
+            fen2 = fen2shiyan + fen2;
+            fen1 = fen1shiyan + fen1;
+            printf("fen5:%d, fen2:%d, fen1:%d, total:%d\n", fen5, fen2, fen1, fen1 + fen2 + fen5);
+            count++;
+        }
     }
-    while (other - 2 >= 0)
-    {
-        other = other - 2;
-        i2++;
-    }
-    while (other - 1 >= 0)
-    {
-        other = other - 1;
-        i3++;
-    }
+    printf("count = %d", count);
     return 0;
 }
