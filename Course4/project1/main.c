@@ -1,5 +1,4 @@
 #include <stdio.h>
-double cal(int n);
 int zhengfu(int n);
 int main()
 {
@@ -10,28 +9,16 @@ int main()
         return 0;
     }
     double result = 0;
-    int i = 1;
-    while (1)
+    for (int i = 1;; i++)
     {
-        result = cal(i);
+        result = result + 1.0 / (3 * i - 2) * zhengfu(i + 1);
         if (1.0 / (3 * i - 2) <= input)
         {
             break;
         }
-        i++;
     }
     printf("sum = %.6lf", result);
     return 0;
-}
-
-double cal(int n)
-{
-    double result = 0;
-    for (int i = 1; i <= n; i++)
-    {
-        result = result + 1.0 / (3 * i - 2) * zhengfu(i + 1);
-    }
-    return result;
 }
 
 int zhengfu(int n)

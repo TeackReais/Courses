@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+long pow2(int a, int b);
 int main()
 {
     int input;
@@ -23,7 +24,7 @@ int main()
         long sum = 0;
         for (int j = 0; j < 7; j++)
         {
-            sum = sum + pow(m[j], input);
+            sum = sum + pow2(m[j], input);
         }
         if (sum == i)
         {
@@ -31,4 +32,14 @@ int main()
         }
     }
     return 0;
+}
+
+long pow2(int a, int b)
+{
+    long result = 1;
+    for (int i = 0; i < b; i++)
+    {
+        result = result * a;
+    }
+    return result;
 }
