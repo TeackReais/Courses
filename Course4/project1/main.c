@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <math.h>
 double cal(int n);
+int zhengfu(int n);
 int main()
 {
     double input;
@@ -29,7 +29,19 @@ double cal(int n)
     double result = 0;
     for (int i = 1; i <= n; i++)
     {
-        result = result + 1.0 / (3 * i - 2) * pow(-1, i + 1);
+        result = result + 1.0 / (3 * i - 2) * zhengfu(i + 1);
     }
     return result;
+}
+
+int zhengfu(int n)
+{
+    if (n % 2 == 1)
+    {
+        return -1;
+    }
+    else
+    {
+        return 1;
+    }
 }

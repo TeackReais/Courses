@@ -1,31 +1,29 @@
 #include <stdio.h>
 #include <math.h>
-
 int main()
 {
-    int n;
-    scanf("%d", &n);
-    long max = pow(10, n) - 1;
-    long min = pow(10, n - 1);
+    int input;
+    scanf("%d", &input);
+    if (input < 3 || input > 7)
+    {
+        return 0;
+    }
+    long max = pow(10, input) - 1;
+    long min = pow(10, input - 1);
     for (long i = min; i <= max; i++)
     {
-        int m[7];
-        int i2 = 0;
-        long a = i;
-        while (1)
+        int m[7] = {0, 0, 0, 0, 0, 0, 0};
+        long number = i;
+        for (int j = 6; j >= 0; j--)
         {
-            m[i2] = a / pow(10, n - i2 - 1);
-            a = a - pow(10, n - i2 - 1) * m[i2];
-            i2++;
-            if (a == 0)
-            {
-                break;
-            }
+            long a = number;
+            number = number / 10;
+            m[j] = a - number * 10;
         }
         long sum = 0;
-        for (int i3 = 0; i3 < n; i3++)
+        for (int j = 0; j < 7; j++)
         {
-            sum = sum + pow(m[i], n);
+            sum = sum + pow(m[j], input);
         }
         if (sum == i)
         {
