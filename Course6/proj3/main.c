@@ -17,9 +17,13 @@ int fn(int a, int n)
     int sum = 0;
     for (int i = 1; i <= n; i++)
     {
-        float temp = 0.1;
+        int temp = 1; //float精度要降低点，不然可能突然增加
         for (int d = 1; d <= i; d++)
         {
+            if (d == 1)
+            {
+                continue;
+            }
             temp = temp * 10;
         }
         sum = sum + temp * a;

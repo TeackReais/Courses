@@ -12,7 +12,7 @@ int main()
     return 0;
 }
 
-void StringCount(char s[])
+void StringCount(char s[]) //网络答案看后修改产生的答案
 {
     int a, b, c, d;
     a = 0;
@@ -22,7 +22,7 @@ void StringCount(char s[])
     for (int i = 0; i < MAXS; i++)
     {
         char input = s[i];
-        if (input == ' ')
+        if (input == ' ' || input == '\n')
         {
             b++;
         }
@@ -34,8 +34,9 @@ void StringCount(char s[])
         {
             a++;
         }
-        else if (input == '\0' || input == '\n')
+        else if (input == '\0')
         {
+            break;
         }
         else
         {
@@ -44,3 +45,21 @@ void StringCount(char s[])
     }
     printf("letter = %d, blank = %d, digit = %d, other = %d", a, b, c, d);
 }
+
+/*void StringCount(char s[])  //网络答案
+{
+    int letter = 0, blank = 0, digit = 0, other = 0, i;
+    int n = strlen(s);
+    for (i = 0; i < n; i++)
+    {
+        if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+            letter++;
+        else if (s[i] == ' ' || s[i] == '\n')
+            blank++;
+        else if (s[i] >= '0' && s[i] <= '9')
+            digit++;
+        else
+            other++;
+    }
+    printf("letter = %d, blank = %d, digit = %d, other = %d", letter, blank, digit, other);
+}*/

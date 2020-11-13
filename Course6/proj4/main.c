@@ -18,56 +18,54 @@ int main()
 int factorsum(int number)
 {
     int elements[12000];
-    for (int i = 1; i < number; i++)
+    for (int d = 0; d < 12000; d++)
     {
-        if (number % i == 0)
+        elements[d] = 0;
+    }
+    int i = 0;
+    int a = 1;
+    while (a < number)
+    {
+        if (number % a == 0)
         {
-            elements[i] = i;
+            elements[i] = a;
+            i++;
         }
-        else
-        {
-            elements[i] = 0;
-        }
+        a++;
     }
     int sum = 0;
-    for (int i = 1; i < number; i++)
+    for (int d = 0; d < i; d++)
     {
-        sum = elements[i] + sum;
+        sum = elements[d] + sum;
     }
     return sum;
 }
 
 void PrintPN(int m, int n)
 {
+    int count = 0;
     for (int i = m; i <= n; i++)
     {
-        int elements[12000];
-        for (int d = 1; d < i; d++)
-        {
-            if (i % d == 0)
-            {
-                elements[d] = d;
-            }
-            else
-            {
-                elements[d] = 0;
-            }
-        }
         if (factorsum(i) == i)
         {
-            printf("%d = ", i);
+            printf("%d =", i);
             for (int d = 1; d < i; d++)
             {
-                if (elements[d] != 0)
+                if (i % d == 0 && d == 1)
                 {
-                    if (d != 1)
-                    {
-                        printf(" + ");
-                    }
-                    printf("%d", d);
+                    printf(" %d", d);
+                }
+                else if (i % d == 0)
+                {
+                    printf(" + %d", d);
                 }
             }
             printf("\n");
+            count++;
         }
+    }
+    if (count == 0)
+    {
+        printf("No perfect number");
     }
 }

@@ -1,105 +1,131 @@
 #include <stdio.h>
 
+void array0();
+void array1(int n);
+int calmain(int num1, int num2, char cal);
+int sumarray();
+void arrayspecial();
+
+int numstorage[10]; //保存每个数字
+char cal[10];       //保存运算符
+int numbers[10];    //保存合成的数字
+char judge = '%';   //判断除数是否为0
+
 int main()
 {
-    struct Context
+    int sum = 0;    //求和
+    array0();       //numstorage初始化
+    arrayspecial(); //cal初始化
+    int index = 0;
+    for (int i = 0; i < 10; i++)
     {
         char inputchar;
-    };
-    struct Context input[10000];
-    struct Number
-    {
-        char numbers[10];
-        char yunsuanfuhao;
-    };
-    int i = 0;
-    while (1)
-    {
-        char inputchar;
+        int num;
         scanf("%c", &inputchar);
-        if (inputchar == '=')
+        if ('0' <= inputchar && inputchar <= '9')
         {
+            num = inputchar - '0';
+            numstorage[i] = num;
+            array1(i);
+        }
+        else if (inputchar == '+' || inputchar == '-' || inputchar == '*' || inputchar == '/')
+        {
+            numbers[index] = sumarray();
+            array0();
+            cal[index] = inputchar;
+            index++;
+            i = -1;
+        }
+        else if (inputchar == '=')
+        {
+            numbers[index] = sumarray();
             break;
         }
         else
         {
-            input[i].inputchar = inputchar;
+            printf("ERROR");
+            return 0;
         }
-        i++;
     }
-    struct Number numbers[i];
-    int sum = 0;
-    for (int d = 0; d <= i; d++)
+    getchar();
+    sum = numbers[0];
+    for (int i = 0; i <= index; i++)
     {
-        for (int k = 0;; k++)
+        sum = calmain(sum, numbers[i + 1], cal[i]);
+        if (judge == '$')
         {
-            if (input[d].inputchar = '+')
-            {
-                numbers[k].yunsuanfuhao = input[d].inputchar;
-                continue;
-            }
-            else if (input[d].inputchar = '-')
-
-            {
-                numbers[k].yunsuanfuhao = input[d].inputchar;
-                continue;
-            }
-            else if (input[d].inputchar = '*')
-            {
-                numbers[k].yunsuanfuhao = input[d].inputchar;
-                continue;
-            }
-            else if (input[d].inputchar = '/')
-            {
-                numbers[k].yunsuanfuhao = input[d].inputchar;
-                continue;
-            }
-            else if (input[d].inputchar = '1')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '2')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '3')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '4')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '5')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '6')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '7')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '8')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '9')
-            {
-                /* code */
-            }
-            else if (input[d].inputchar = '0')
-            {
-                /* code */
-            }
-            else
-            {
-                printf("ERROR");
-                return 0;
-            }
+            printf("ERROR");
+            return 0;
         }
     }
+    printf("%d", sum);
     return 0;
+}
+
+int calmain(int num1, int num2, char cal)
+{
+    if (cal == '+')
+    {
+        return num1 + num2;
+    }
+    else if (cal == '-')
+    {
+        return num1 - num2;
+    }
+    else if (cal == '*')
+    {
+        return num1 * num2;
+    }
+    else if (cal == '/')
+    {
+        if (num2 == 0)
+        {
+            judge = '$';
+            return 0;
+        }
+        return num1 / num2;
+    }
+    else if (cal == '&')
+    {
+        return num1;
+    }
+    else
+    {
+        judge = '$';
+        return 0;
+    }
+}
+
+void array0()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        numstorage[i] = 0;
+    }
+}
+
+void arrayspecial()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        cal[i] = '&';
+    }
+}
+
+void array1(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        numstorage[i] = numstorage[i] * 10;
+    }
+}
+
+int sumarray()
+{
+    int sum = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        sum = sum + numstorage[i];
+    }
+    return sum;
 }

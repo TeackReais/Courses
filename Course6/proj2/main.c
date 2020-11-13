@@ -3,19 +3,33 @@
 int main()
 {
     int i = 0;
+    int count = 0;
+    char inputchar[100000];
     while (1)
     {
-        char input;
-        scanf("%c", &input);
-        if (input == ' ')
+        scanf("%c", &inputchar[i]);
+        if (inputchar[i] == ' ')
         {
-            i++;
+            if (i == 0)
+            {
+                i++;
+                continue;
+            }
+            if (inputchar[i - 1] != ' ')
+            {
+                count++;
+            }
         }
-        else if (input == '\n')
+        else if (inputchar[i] == '\n')
         {
+            if (inputchar[i - 1] == ' ')
+            {
+                count--;
+            }
             break;
         }
+        i++;
     }
-    printf("%d",i+1);
+    printf("%d", count + 1);
     return 0;
 }
