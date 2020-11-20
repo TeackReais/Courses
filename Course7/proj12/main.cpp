@@ -5,6 +5,7 @@ int main()
 {
     char vaildChars[100];
     int num[100];
+    
     int zhengfu = 1;
     long sum = 0;
     int index = 0;
