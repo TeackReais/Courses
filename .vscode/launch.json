@@ -4,8 +4,8 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug",
-            "program": "${workspaceFolder}/${fileBasenameNoExtension}",
+            "name": "C/C++Debug",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "Build with Clang"

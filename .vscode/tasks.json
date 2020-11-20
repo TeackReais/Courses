@@ -8,9 +8,9 @@
             "args": [
                 "-std=c++17",
                 "-stdlib=libc++",
-                "${fileBasenameNoExtension}.cpp",
+                "${fileDirname}/${fileBasenameNoExtension}${fileExtname}",
                 "-o",
-                "${fileBasenameNoExtension}",
+                "${fileDirname}/${fileBasenameNoExtension}",
                 "--debug"
             ],
             "group": {
