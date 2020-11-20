@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> //第一天上交
 
 int main()
 {
@@ -20,11 +20,6 @@ int main()
         else if (input == '\n')
         {
             break;
-        }
-        else
-        {
-            printf("error");
-            return 0;
         }
     }
     for (int i = 0; i <= index; i++)
@@ -49,7 +44,7 @@ int main()
     {
         if (i != 0)
         {
-            printf(" ");
+           printf(" ");
         }
         printf("%s", strings[i].word);
     }
