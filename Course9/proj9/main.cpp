@@ -18,8 +18,12 @@ int main()
     min = 0;
     for (int i = 0; i < numbers; i++)
     {
-        scanf("%f", &books[i].price);
+        getchar();
         cin.getline(books[i].name, 80);
+        scanf("%f", &books[i].price);
+    }
+    for (int i = 0; i < numbers; i++)
+    {
         if (books[i].price > books[max].price)
         {
             max = i;
