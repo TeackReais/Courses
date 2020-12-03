@@ -5,7 +5,7 @@ using namespace std;
 struct book
 {
     char name[80];
-    float price;
+    double price;  //double正确概率高于float
 };
 
 int main()
@@ -20,7 +20,7 @@ int main()
     {
         getchar();
         cin.getline(books[i].name, 80);
-        scanf("%f", &books[i].price);
+        scanf("%lf", &books[i].price);
     }
     for (int i = 0; i < numbers; i++)
     {
@@ -33,6 +33,6 @@ int main()
             min = i;
         }
     }
-    printf("%.2f, %s\n", books[max].price, books[max].name);
-    printf("%.2f, %s\n", books[min].price, books[min].name);
+    printf("%.2lf, %s\n", books[max].price, books[max].name);
+    printf("%.2lf, %s\n", books[min].price, books[min].name);
 }
