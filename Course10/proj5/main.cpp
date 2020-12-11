@@ -17,7 +17,7 @@ int main()
 char *match(char *s, char ch1, char ch2)
 {
     int i = 0;
-    char *p;
+    char *p = NULL;
     int judge = 0;
     while (1)
     {
@@ -25,7 +25,7 @@ char *match(char *s, char ch1, char ch2)
         {
             if (p == NULL)
             {
-                p = &s[i];
+                p = &s[i + 1];
             }
             break;
         }
