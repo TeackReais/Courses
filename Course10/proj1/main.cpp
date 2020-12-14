@@ -14,7 +14,7 @@ int main()
     for (int var1 = 0; var1 < 200; var1++)
     {
     }
-    // int *pstr;
+    int *pstr;
     // int *p;
     // test(p);
     // int a = 10;
