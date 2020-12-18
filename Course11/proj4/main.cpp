@@ -13,16 +13,21 @@ struct HomeEndKey
 
 int main()
 {
-    int index = 0;
-    char input[10][100000];
-    while (!cin.eof())
+    // int index = 0;
+    // char firstchar;
+    // while (scanf("%c", &firstchar) != EOF)  //OJ EOF测试
+    // {
+    //     char input[100000];
+    //     cin.getline(input, 100000);
+    //     move(input, 1);
+    //     input[0] = firstchar;
+    //     solve(input);
+    //     index++;
+    // }
+    char input[100000];
+    while (cin.getline(input, 100000)) //OJ EOF测试
     {
-        cin.getline(input[index], 100000);
-        index++;
-    }
-    for (int i = 0; i < index; i++)
-    {
-        solve(input[i]);
+        solve(input);
     }
     return 0;
 }
@@ -57,6 +62,10 @@ void solve(char input[])
         }
         if (input[i] == ']')
         {
+            if (judge == true)
+            {
+                continue;
+            }
             HomeEndkeys[index2].end = i;
             judge = true;
             index2++;
@@ -88,5 +97,5 @@ void solve(char input[])
             mirrorInput[j] = movestr[j];
         }
     }
-    printf("%s", mirrorInput);
+    printf("%s\n", mirrorInput);
 }

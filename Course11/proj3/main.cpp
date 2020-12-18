@@ -3,41 +3,21 @@
 #include <stdio.h>
 using namespace std;
 
-struct str
-{
-    char str[100];
-};
-
 void Reverse(char s[]);
 int main()
 {
     int index = 0;
-    // char input[100][100];
-    struct str input[40000];
-    while (index<40000)
+    char input[10000];
+    while (index < 40000)
     {
-        scanf("%s", input[index].str);
-        if (strcmp(input[index].str, "-1") == 0)
+        scanf("%s", input);
+        if (strcmp(input, "-1") == 0)
         {
             break;
         }
         index++;
-    }
-    // char mirror[100];
-    // int len;
-    for (int i = 0; i < index; i++)
-    {
-        // strcpy(mirror, "");
-        // len = strlen(input[i]);
-        // for (int d = 0; d < len; d++)
-        // {
-        //     mirror[d] = input[i][len - d - 1];
-        // }
-        // mirror[len] = '\0';
-        // printf("%s\n", mirror);
-        Reverse(input[i].str);
-        printf("%s", input[i].str);
-        printf("\n");
+        Reverse(input);
+        printf("%s\n", input);
     }
     return 0;
 }
