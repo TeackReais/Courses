@@ -13,17 +13,6 @@ struct HomeEndKey
 
 int main()
 {
-    // int index = 0;
-    // char firstchar;
-    // while (scanf("%c", &firstchar) != EOF)  //OJ EOF测试
-    // {
-    //     char input[100000];
-    //     cin.getline(input, 100000);
-    //     move(input, 1);
-    //     input[0] = firstchar;
-    //     solve(input);
-    //     index++;
-    // }
     char input[100000];
     while (cin.getline(input, 100000)) //OJ EOF测试
     {
