@@ -10,7 +10,6 @@
 # Icon must end with two \r
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -31,3 +30,7 @@ Temporary Items
 
 #Personal Settings
 *.dSYM
+
+#自定义
+a.out
+main

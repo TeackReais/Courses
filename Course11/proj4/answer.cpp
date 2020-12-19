@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <stdio.h>
 using namespace std;
 
 void move(char str[], int length);
