@@ -8,7 +8,7 @@ struct ListNode
 };
 
 struct ListNode *readlist();
-struct ListNode *getodd(struct ListNode **L);
+struct ListNode *deletem(struct ListNode *L, int m);
 void printlist(struct ListNode *L)
 {
     struct ListNode *p = L;
@@ -22,11 +22,12 @@ void printlist(struct ListNode *L)
 
 int main()
 {
-    struct ListNode *L, *Odd;
-    L = readlist();
-    Odd = getodd(&L);
-    printlist(Odd);
+    int m;
+    struct ListNode *L = readlist();
+    scanf("%d", &m);
+    L = deletem(L, m);
     printlist(L);
+
     return 0;
 }
 
@@ -63,12 +64,12 @@ struct ListNode *readlist()
     return head;
 }
 
-struct ListNode *getodd(struct ListNode **L)
+struct ListNode *deletem(struct ListNode *L, int m)
 {
-    struct ListNode *p, *temp, *NodeList2Now, *NodeList2head, *NodeList3Now, *NodeList3head;
+    struct ListNode *p, *temp, *NodeList2Now, *NodeList2head;
     int size = sizeof(struct ListNode);
     int index;
-    p = *L;
+    p = L;
     index = 0;
     while (1) //新建奇数链表
     {
@@ -78,7 +79,7 @@ struct ListNode *getodd(struct ListNode **L)
             temp->next = NULL;
             break;
         }
-        if (p->data % 2 == 1 && index == 0)
+        if (p->data != m && index == 0)
         {
             NodeList2head = (struct ListNode *)malloc(size);
             NodeList2head->data = p->data;
@@ -88,7 +89,7 @@ struct ListNode *getodd(struct ListNode **L)
             p = p->next;
             continue;
         }
-        if (p->data % 2 == 1 && index != 0)
+        if (p->data != m && index != 0)
         {
             NodeList2Now->data = p->data;
             temp = NodeList2Now;
@@ -97,39 +98,8 @@ struct ListNode *getodd(struct ListNode **L)
         }
         p = p->next;
     }
-    p = *L;
-    index = 0;
-    while (1) //新建偶数链表
-    {
-        if (p == NULL)
-        {
-            free(NodeList3Now);
-            temp->next = NULL;
-            break;
-        }
-        if (p->data % 2 == 0 && index == 0)
-        {
-            NodeList3head = (struct ListNode *)malloc(size);
-            NodeList3head->data = p->data;
-            index++;
-            NodeList3Now = (struct ListNode *)malloc(size);
-            NodeList3head->next = NodeList3Now;
-            p = p->next;
-            continue;
-        }
-        if (p->data % 2 == 0 && index != 0)
-        {
-            NodeList3Now->data = p->data;
-            temp = NodeList3Now;
-            NodeList3Now = (struct ListNode *)malloc(size);
-            temp->next = NodeList3Now;
-        }
-        p = p->next;
-    }
-    p = *L;
-    temp = *L;
-    *L = NodeList3head; //L=&NodeList3head无效
-    while (1)           //释放原链表内存
+    p = L;
+    while (1) //释放原链表内存
     {
         p = temp;
         temp = p->next;
