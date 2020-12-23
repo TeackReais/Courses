@@ -23,17 +23,19 @@ void printlist(struct ListNode *head)
 int main()
 {
     struct ListNode *head;
-
     head = createlist();
     head = reverse(head);
     printlist(head);
-
     return 0;
 }
 
 struct ListNode *reverse(struct ListNode *head)
 {
-    struct ListNode *p, *temp, *NodeList2Now, *NodeList2end;
+    if (head == NULL)
+    {
+        return NULL;
+    }
+    struct ListNode *p, *temp, *NodeList2Now, *NodeList2End;
     int size = sizeof(struct ListNode);
     p = head;
     int index = 0;
@@ -41,16 +43,20 @@ struct ListNode *reverse(struct ListNode *head)
     {
         if (p == NULL)
         {
+            if (index == 1)
+            {
+                return NodeList2End;
+            }
             free(NodeList2Now);
             break;
         }
         if (index == 0)
         {
-            NodeList2end = (struct ListNode *)malloc(size);
+            NodeList2End = (struct ListNode *)malloc(size);
             NodeList2Now = (struct ListNode *)malloc(size);
-            NodeList2end->data = p->data;
-            NodeList2end->next = NULL;
-            NodeList2Now->next = NodeList2end;
+            NodeList2End->data = p->data;
+            NodeList2End->next = NULL;
+            NodeList2Now->next = NodeList2End;
             p = p->next;
             index++;
             continue;
@@ -60,6 +66,7 @@ struct ListNode *reverse(struct ListNode *head)
         NodeList2Now = (struct ListNode *)malloc(size);
         NodeList2Now->next = temp;
         p = p->next;
+        index++;
     }
     return temp;
 }

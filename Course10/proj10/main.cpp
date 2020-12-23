@@ -43,7 +43,7 @@ struct stud_node *createlist()
             }
             else if (index == 0)
             {
-                head = NULL;
+                return NULL;
             }
             else
             {
@@ -73,16 +73,23 @@ struct stud_node *createlist()
 
 struct stud_node *deletelist(struct stud_node *head, int min_score)
 {
+    if (head == NULL)
+    {
+        return NULL;
+    }
     struct stud_node *p, *temp, *NodeList2Now, *NodeList2head;
     int size = sizeof(struct stud_node);
     int index;
     p = head;
     index = 0;
-    while (1) //新建奇数链表
+    while (1) //新建链表
     {
         if (p == NULL)
         {
-            free(NodeList2Now);
+            if (index == 0)
+            {
+                return NULL;
+            }
             if (index == 1)
             {
                 NodeList2head->next = NULL;
@@ -90,6 +97,7 @@ struct stud_node *deletelist(struct stud_node *head, int min_score)
             else
             {
                 temp->next = NULL;
+                free(NodeList2Now);
             }
             break;
         }
@@ -123,17 +131,17 @@ struct stud_node *deletelist(struct stud_node *head, int min_score)
         }
         p = p->next;
     }
-    p = head;
-    temp = head;
-    while (1) //释放原链表内存
-    {
-        p = temp;
-        temp = p->next;
-        if (temp == NULL)
-        {
-            break;
-        }
-        free(p);
-    }
+    // p = head;
+    // temp = head;
+    // while (1) //释放原链表内存
+    // {
+    //     p = temp;
+    //     temp = p->next;
+    //     if (temp == NULL)
+    //     {
+    //         break;
+    //     }
+    //     free(p);
+    // }
     return NodeList2head;
 }

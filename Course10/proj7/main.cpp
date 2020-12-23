@@ -41,7 +41,11 @@ struct ListNode *readlist()
         scanf("%d", &input);
         if (input == -1)
         {
-            if (index == 1)
+            if (index == 0)
+            {
+                return NULL;
+            }
+            else if (index == 1)
             {
                 head->next = NULL;
             }
@@ -72,22 +76,32 @@ struct ListNode *readlist()
 
 struct ListNode *getodd(struct ListNode **L)
 {
+    if (*L == NULL || L == NULL)
+    {
+        return NULL;
+    }
     struct ListNode *p, *temp, *NodeList2Now, *NodeList2head, *NodeList3Now, *NodeList3head;
     int size = sizeof(struct ListNode);
     int index;
+    //新建奇数链表
     p = *L;
     index = 0;
-    while (1) //新建奇数链表
+    while (1)
     {
         if (p == NULL)
         {
-            free(NodeList2Now);
+            //判断奇数链表是否为空
+            if (index == 0)
+            {
+                return NULL;
+            }
             if (index == 1)
             {
                 NodeList2head->next = NULL;
             }
             else
             {
+                free(NodeList2Now);
                 temp->next = NULL;
             }
             break;
@@ -112,19 +126,27 @@ struct ListNode *getodd(struct ListNode **L)
         }
         p = p->next;
     }
+    //新建偶数链表
     p = *L;
     index = 0;
-    while (1) //新建偶数链表
+    while (1)
     {
         if (p == NULL)
         {
-            free(NodeList3Now);
+            //判断偶数链表是否为空
+            if (index == 0)
+            {
+                temp = *L;
+                *L = NULL;
+                return temp;
+            }
             if (index == 1)
             {
                 NodeList3head->next = NULL;
             }
             else
             {
+                free(NodeList3Now);
                 temp->next = NULL;
             }
             break;
@@ -149,18 +171,18 @@ struct ListNode *getodd(struct ListNode **L)
         }
         p = p->next;
     }
-    p = *L;
-    temp = *L;
-    *L = NodeList3head; //L=&NodeList3head无效
-    while (1)           //释放原链表内存
-    {
-        p = temp;
-        temp = p->next;
-        if (temp == NULL)
-        {
-            break;
-        }
-        free(p);
-    }
-    return NodeList2head;
+    // p = *L;
+    // temp = *L;
+    *L = NodeList3head; //L=&NodeList3head无效，赋值，偶数链表
+    // while (1)           //释放原链表内存
+    // {
+    //     p = temp;
+    //     temp = p->next;
+    //     if (temp == NULL)
+    //     {
+    //         break;
+    //     }
+    //     free(p);
+    // }
+    return NodeList2head; //奇数链表
 }
