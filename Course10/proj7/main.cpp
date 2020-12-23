@@ -36,18 +36,25 @@ struct ListNode *readlist()
     int size = sizeof(struct ListNode);
     struct ListNode *head, *p, *temp;
     int index = 0;
-    head = (struct ListNode *)malloc(size);
     while (1)
     {
         scanf("%d", &input);
         if (input == -1)
         {
-            temp->next = NULL;
+            if (index == 1)
+            {
+                head->next = NULL;
+            }
+            else
+            {
+                temp->next = NULL;
+            }
             free(p);
             break;
         }
         if (index == 0)
         {
+            head = (struct ListNode *)malloc(size);
             p = (struct ListNode *)malloc(size);
             head->next = p;
             head->data = input;
@@ -75,7 +82,14 @@ struct ListNode *getodd(struct ListNode **L)
         if (p == NULL)
         {
             free(NodeList2Now);
-            temp->next = NULL;
+            if (index == 1)
+            {
+                NodeList2head->next = NULL;
+            }
+            else
+            {
+                temp->next = NULL;
+            }
             break;
         }
         if (p->data % 2 == 1 && index == 0)
@@ -94,6 +108,7 @@ struct ListNode *getodd(struct ListNode **L)
             temp = NodeList2Now;
             NodeList2Now = (struct ListNode *)malloc(size);
             temp->next = NodeList2Now;
+            index++;
         }
         p = p->next;
     }
@@ -104,7 +119,14 @@ struct ListNode *getodd(struct ListNode **L)
         if (p == NULL)
         {
             free(NodeList3Now);
-            temp->next = NULL;
+            if (index == 1)
+            {
+                NodeList3head->next = NULL;
+            }
+            else
+            {
+                temp->next = NULL;
+            }
             break;
         }
         if (p->data % 2 == 0 && index == 0)
@@ -123,6 +145,7 @@ struct ListNode *getodd(struct ListNode **L)
             temp = NodeList3Now;
             NodeList3Now = (struct ListNode *)malloc(size);
             temp->next = NodeList3Now;
+            index++;
         }
         p = p->next;
     }

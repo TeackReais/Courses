@@ -52,11 +52,16 @@ int main()
     //         break;
     //     }
     // }
+    // for (int i = 0; i < input; i++)
+    // {
+    //     printf("%.2lf %.2lf %.2lf\n", Points[index[i]].x, Points[index[i]].y, Points[index[i]].mod);
+    // }
     for (int i = 0; i < input; i++)
     {
         printf("%.2lf %.2lf %.2lf\n", Points[i].x, Points[i].y, Points[i].mod);
     }
 }
+
 int cmpfunc(const void *a, const void *b) //小于0则a在前
 {
     struct Point compareA = (*(Point *)a);

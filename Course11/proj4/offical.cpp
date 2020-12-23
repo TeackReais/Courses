@@ -1,37 +1,28 @@
 #include <iostream>
-#include <stdio.h>
-#include <string.h>
+#include <string>
+#include <list>
+
 using namespace std;
-#define maxl 100005
 int main()
 {
-    char s[maxl];
-    while (~scanf("%s", s + 1))
+    string line;
+    while (getline(cin, line))
     {
-        int Next[maxl] = {0};
-        int cur = 0, last = 0;
-        for (int i = 1; s[i]; ++i)
-        {
-            if (s[i] == '[')
-                cur = 0;
-            else if (s[i] == ']')
-                cur = last;
+        list<char> text;
+        auto i = text.end();
+        for (char c : line)
+            if (c == '[')
+                i = text.begin();
+            else if (c == ']')
+                i = text.end();
             else
             {
-                //链表插入操作
-                Next[i] = Next[cur];
-                Next[cur] = i;
-                //last的更新
-                if (cur == last)
-                    last = i;
-                //cur的更新
-                cur = i;
+                i = text.insert(i, c);
+                ++i;
             }
-        }
-        for (int i = Next[0]; i != 0; i = Next[i])
-            if (s[i] != '[' && s[i] != ']')
-                printf("%c", s[i]);
-        printf("\n");
+        for (char c : text)
+            putchar(c);
+        puts("");
     }
     return 0;
 }
