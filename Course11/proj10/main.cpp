@@ -19,19 +19,24 @@ struct Point
 int main()
 {
     int input;
-    scanf("%d", &input);
-    struct Point Points[input];
-    for (int i = 0; i < input; i++)
+    while (scanf("%d", &input) != EOF)
     {
-        scanf("%lf %lf", &Points[i].x, &Points[i].y);
-        Points[i].mod2 = pow(Points[i].x, 2) + pow(Points[i].y, 2);
-        Points[i].mod = sqrt(Points[i].mod2);
-        Points[i].index = i;
-    }
-    qsort(Points, input, sizeof(Point), cmpfunc);
-    for (int i = 0; i < input; i++)
-    {
-        printf("%.2lf %.2lf %.2lf\n", Points[i].x, Points[i].y, Points[i].mod);
+        struct Point *Points;
+        Points = (struct Point *)malloc(sizeof(struct Point) * input);
+        // struct Point Points[input];
+        for (int i = 0; i < input; i++)
+        {
+            scanf("%lf %lf", &Points[i].x, &Points[i].y);
+            Points[i].mod2 = pow(Points[i].x, 2) + pow(Points[i].y, 2);
+            Points[i].mod = sqrt(Points[i].mod2);
+            Points[i].index = i;
+        }
+        qsort(Points, input, sizeof(Point), cmpfunc);
+        for (int i = 0; i < input; i++)
+        {
+            printf("%.2lf %.2lf %.2lf\n", Points[i].x, Points[i].y, Points[i].mod);
+        }
+        free(Points);
     }
     return 0;
 }

@@ -7,10 +7,8 @@ int main()
 {
     char input;
     int num;
-    while (scanf("%c %d", &input, &num) != EOF)
-    {
-        solve(input, num);
-    }
+    scanf("%c %d", &input, &num);
+    solve(input, num);
     return 0;
 }
 
