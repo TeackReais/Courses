@@ -40,7 +40,7 @@ int cmpfunc(const void *a, const void *b) //小于0则a在前
 {
     struct Point compareA = (*(Point *)a);
     struct Point compareB = (*(Point *)b);
-    if (compareA.mod2 != compareB.mod2)
+    if (fabs(compareA.mod2 - compareB.mod2) > 0.0000000001)
     {
         if (compareA.mod2 < compareB.mod2)
         {
