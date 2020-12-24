@@ -46,7 +46,7 @@ void solve(char input, int num)
     {
         for (int d = 0; d < num; d++)
         {
-            change[i][d] = location[num - 1 - i][num - 1 - d];
+            change[i][d] = location[i][num - 1 - d]; //左右镜像，题目不同
         }
     }
     int index = 0;
