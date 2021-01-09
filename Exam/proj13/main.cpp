@@ -15,6 +15,7 @@ int main()
             break;
         }
         //End
+        //Two Testcases Wrong
         int res = solve(num);
         printf("%d\n", res);
     }
